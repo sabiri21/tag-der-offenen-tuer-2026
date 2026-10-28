@@ -1,0 +1,24 @@
+# Gleam / Erlang build artifacts
+*.beam
+*.ez
+/build/
+/_build/
+**/build/
+erl_crash.dump
+
+# Local runtime data
+*.sqlite
+*.sqlite3
+*.db
+*.log
+htldb.sqlite
+
+# Environment and editor files
+.env
+.env.*
+.vscode/
+.idea/
+.DS_Store
+
+# Generic OS/editor artifacts
+Thumbs.db

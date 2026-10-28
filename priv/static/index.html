@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HTL HL Cybersecurity</title>
+<link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+<header class="site-header">
+<h1>HTL HL Cybersecurity</h1>
+<p>Übungsplattform für IT-Sicherheit. Löse die Aufgaben, sammle Flags und
+       lerne, wie Angriffe funktionieren und wie man sich davor schützt.</p>
+</header>
+
+<main class="container">
+<div class="grid">
+
+<div class="card" data-href="wartungsseite">
+<p class="card__level">Einsteiger</p>
+<h2><a href="wartungsseite">Wartungsseite</a></h2>
+<p>Auf dieser Seite ist etwas versteckt. Finde es.</p>
+<p class="card__solvecount">__HIDDEN_IN_SOURCE_SOLVE_COUNT__</p>
+</div>
+
+<div class="card" data-href="notenportal">
+<p class="card__level">Mittel</p>
+<h2><a href="notenportal">Notenportal</a></h2>
+<p>Melde dich als Administrator an, ohne das Passwort zu kennen.</p>
+<p class="card__solvecount">__SESSION_COOKIES_SOLVE_COUNT__</p>
+</div>
+
+<div class="card" data-href="htldb">
+<p class="card__level">Fortgeschritten</p>
+<h2><a href="htldb">HTL DB</a></h2>
+<p>Lass dir Informationen über Lehrerinnen und Lehrer ausgeben, vielleicht auch mehr.</p>
+<p class="card__solvecount">__SQL_INJECTION_SOLVE_COUNT__</p>
+</div>
+
+</div>
+
+<h3 class="section-subtitle">Weitere Challenges</h3>
+<div class="grid grid--compact">
+
+<div class="card card--compact">
+<p>Reverse Engineering</p>
+<a class="card__download" href="/static/downloads/rev_challenge" download="login">Herunterladen</a>
+</div>
+
+<div class="card card--compact">
+<p>Steganographie</p>
+<a class="card__download" href="/static/downloads/steg_challenge.wav" download="secret_sound">Herunterladen</a>
+</div>
+
+</div>
+</main>
+
+<footer class="site-footer">
+    Diese Techniken dürfen nur in dieser Übungsumgebung angewendet werden.
+    Bei fremden Systemen ist es ohne Erlaubnis strafbar.
+</footer>
+
+<script src="static/card-click.js"></script>
+</body>
+</html>

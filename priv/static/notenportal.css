@@ -1,0 +1,33 @@
+.fake-app label { color: #1a1a1a; }
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1.25rem;
+}
+
+.checkbox-row label { margin: 0; }
+
+#dashboard h3 { color: #1a1a1a; margin-top: 0; }
+
+#dashboard p { color: #1a1a1a; }
+
+.role-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: .85rem;
+  padding: .2rem .5rem;
+  border-radius: 6px;
+  background: var(--border);
+  color: var(--text);
+}
+
+#login-error {
+  color: var(--danger);
+  display: none;
+}
+
+#flag-form {
+  margin-top: 1.5rem;
+}

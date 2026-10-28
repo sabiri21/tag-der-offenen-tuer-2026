@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wartungsseite - HTL Hack Lab</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/wartungsseite.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Wartungsseite</h1>
+    <a class="btn btn--ghost" href="/">Zurück zur Übersicht</a>
+  </header>
+
+  <main class="container">
+    <div class="story">
+      Diese Seite wird gerade überarbeitet. Auf den ersten Blick sieht man
+      nicht viel, aber im Inneren der Seite steckt etwas.
+    </div>
+
+    <section class="fake-app">
+      <h2>Diese Seite befindet sich im Wartungsmodus</h2>
+      <p>Bitte versuche es später erneut.</p>
+
+      <!-- Hier liegt die Flag. Sie ist im HTML vorhanden, aber mit CSS
+           (display: none) unsichtbar gemacht. -->
+      <div id="versteckt">
+        Flag: HTL{v3rst3ckt_1m_qu3llt3xt}
+      </div>
+    </section>
+
+    <details class="hint">
+      <summary>Tipp 1</summary>
+      <p>Nicht alles, was unsichtbar ist, ist auch aus dem HTML entfernt.</p>
+    </details>
+    <details class="hint">
+      <summary>Tipp 2</summary>
+      <p>Rechtsklick auf die Seite → "Seitenquelltext anzeigen" (oder Taste F12
+         für die Entwicklertools) zeigt dir den kompletten HTML-Code.</p>
+    </details>
+
+    <form class="inline-form" id="flag-form" data-challenge="hidden_in_source">
+      <input class="input" type="text" id="flag-input" placeholder="Flag eingeben, z. B. HTL{...}" aria-label="Flag">
+      <button class="btn" type="submit">Abgeben</button>
+    </form>
+    <p id="flag-feedback"></p>
+
+    <div class="notice notice--success" id="solved-notice" hidden>
+      <h3>Richtig</h3>
+      <p>Mit <code>display: none</code> wird ein Element nur optisch versteckt,
+         im HTML-Code bleibt es trotzdem vollständig vorhanden und lesbar.
+         Für wirklich geheime Daten gehören sie gar nicht erst in den
+         HTML-Code, der an den Browser geschickt wird.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">Nur in dieser Übungsumgebung anwenden.</footer>
+
+  <script src="/static/wartungsseite.js"></script>
+  <script src="/static/flag-form.js"></script>
+  <script src="static/flag.js"></script>
+</body>
+</html>

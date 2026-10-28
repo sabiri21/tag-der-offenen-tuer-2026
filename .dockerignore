@@ -1,0 +1,22 @@
+# VCS / editor
+.git
+.gitignore
+.github
+.vscode
+.idea
+
+# Build artifacts
+build/
+_target/
+**/__pycache__/
+
+# Local runtime data
+*.sqlite
+*.sqlite3
+*.db
+*.log
+.env
+.env.*
+
+# OS files
+.DS_Store

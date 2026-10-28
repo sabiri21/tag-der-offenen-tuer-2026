@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notenportal - HTL Hack Lab</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/notenportal.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Notenportal</h1>
+    <a class="btn btn--ghost" href="/">Zurück zur Übersicht</a>
+  </header>
+
+  <main class="container">
+    <div class="story">
+      Melde dich im Notenportal an und finde heraus, wie dort die Berechtigungen
+      funktionieren.
+    </div>
+
+    <section class="fake-app">
+      <h2>Schul-Notenportal</h2>
+
+      <form id="login-form">
+        <div class="field">
+          <label for="user">Benutzername</label>
+          <input class="input" id="user" name="user" type="text" autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="pw">Passwort</label>
+          <input class="input" id="pw" name="pw" type="password" autocomplete="current-password">
+        </div>
+        <div class="checkbox-row">
+          <input id="stay" type="checkbox">
+          <label for="stay">Angemeldet bleiben</label>
+        </div>
+        <button class="btn" type="submit">Anmelden</button>
+        <p id="login-error">
+          Benutzername oder Passwort falsch.
+        </p>
+      </form>
+
+      <div id="dashboard" hidden>
+        <h3>Willkommen, <span id="dash-user"></span></h3>
+        <p>Deine Rolle: <span id="dash-role" class="role-tag"></span></p>
+        <p id="dash-content"></p>
+        <button class="btn btn--ghost" id="logout">Abmelden</button>
+      </div>
+    </section>
+
+    <details class="hint">
+      <summary>Tipp 1</summary>
+      <p>Nach der Anmeldung merkt sich die Seite deine Rolle in einem Cookie.
+         Sieh dir im Browser unter "Website-Daten" oder "Cookies" an, was dort steht.</p>
+    </details>
+    <details class="hint">
+      <summary>Tipp 2</summary>
+      <p>Was passiert, wenn du den Wert des Cookies von <code>guest</code> auf
+         <code>teacher</code> änderst und die Seite neu lädst?</p>
+    </details>
+
+    <form class="inline-form" id="flag-form" data-challenge="session_cookies">
+      <input class="input" type="text" id="flag-input" placeholder="Flag eingeben, z. B. HTL{...}" aria-label="Flag">
+      <button class="btn" type="submit">Abgeben</button>
+    </form>
+    <p id="flag-feedback"></p>
+
+    <div class="notice notice--success" id="solved-notice" hidden>
+      <h3>Richtig</h3>
+      <p>Die Seite hat der Rolle im Cookie vertraut, ohne sie am Server zu
+         überprüfen. Schutz: Rechte serverseitig in der Sitzung speichern, nie
+         einem Wert vertrauen, den der Browser frei ändern kann.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">Nur in dieser Übungsumgebung anwenden.</footer>
+
+  <script src="/static/notenportal.js"></script>
+  <script src="/static/flag-form.js"></script>
+  <script src="static/flag.js"></script>
+</body>
+</html>

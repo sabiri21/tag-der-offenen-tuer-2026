@@ -1,0 +1,306 @@
+/* 1. Variablen: hier Farben, Abstände und Schrift zentral ändern */
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --border: #30363d;
+  --accent: #39ff88;
+  --accent-text: #000000;
+  --danger: #ff5c5c;
+
+  --font-heading: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius: 12px;
+  --space: 1rem;
+  --max-width: 1000px;
+}
+
+/* 2. Basis */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--accent);
+  margin: 0 0 .5rem;
+  line-height: 1.25;
+}
+
+p { margin: 0 0 var(--space); }
+a { color: var(--accent); }
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 3. Layout */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.site-header {
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header p {
+  color: var(--muted);
+  max-width: 60ch;
+  margin: .5rem auto;
+}
+
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: .9rem;
+  padding: 2rem 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* 4. Komponenten */
+
+/* Karte (Challenge-Übersicht). Mit <a> oder <div> verwendbar. */
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Hover-Effekt für die ganze Karte, auch wenn sie ein <div> statt <a> ist */
+.card:hover,
+.card:focus-within {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(57, 255, 136, 0.12);
+}
+
+/* Karten, die per JS klickbar gemacht werden (siehe card-click.js) */
+.card[data-href] {
+  cursor: pointer;
+}
+
+.card.solved {
+  border-color: var(--accent);
+  animation: card-solved .45s ease-out;
+}
+
+@keyframes card-solved {
+  0% { box-shadow: 0 0 0 0 rgba(57, 255, 136, 0.5); transform: scale(1); }
+  45% { box-shadow: 0 0 0 8px rgba(57, 255, 136, 0.18); transform: scale(1.02); }
+  100% { box-shadow: 0 0 0 0 rgba(57, 255, 136, 0); transform: scale(1); }
+}
+
+.card__level {
+  font-size: .9rem;
+  color: var(--muted);
+  margin: 0 0 .5rem;
+}
+
+/* Download-Link innerhalb einer Karte, z. B. für begleitende Challenge-Dateien */
+.card__download {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: 1rem;
+  font-size: .9rem;
+  font-family: var(--font-heading);
+  color: var(--accent);
+  text-decoration: none;
+  border-top: 1px solid var(--border);
+  padding-top: .75rem;
+}
+
+.card__download:hover,
+.card__download:focus-visible {
+  text-decoration: underline;
+}
+
+.card__download::before {
+  content: "\2193"; /* Pfeil nach unten als einfaches Icon ohne Bilddatei */
+}
+
+/* Dezenter Abschnittstitel für sekundäre Inhalte, z. B. "Weitere Materialien" */
+.section-subtitle {
+  font-family: var(--font-heading);
+  font-size: .95rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin: 2rem 0 .75rem;
+}
+
+/* Kleinere Kartenvariante für sekundäre Inhalte */
+.grid--compact {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: .6rem;
+}
+
+.card--compact {
+  padding: .75rem;
+}
+
+.card--compact p {
+  font-size: .9rem;
+  margin: 0 0 .5rem;
+}
+
+.card--compact .card__download {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+  font-size: .8rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-text);
+  border: 0;
+  border-radius: 8px;
+  padding: .7rem 1.2rem;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover { filter: brightness(.9); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+/* Formularfelder */
+.input {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .7rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.input:focus { border-color: var(--accent); }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  margin-bottom: var(--space);
+}
+
+.field label { color: var(--muted); font-size: .95rem; }
+
+/* Zeile aus Eingabefeld und Button (z. B. Flag abgeben) */
+.inline-form {
+  display: flex;
+  gap: .5rem;
+}
+
+.inline-form .input { flex: 1; min-width: 0; }
+
+/* Story-Box: Hintergrundgeschichte zu einer Aufgabe */
+.story {
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  padding: .75rem 1rem;
+  margin: var(--space) 0;
+}
+
+/* Tipps zum Aufklappen: <details class="hint"> */
+.hint {
+  color: var(--muted);
+  margin-top: .75rem;
+}
+
+.hint summary { cursor: pointer; color: var(--text); }
+
+/* Hinweis-Boxen nach Abgabe: .notice--success / .notice--error */
+.notice {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: var(--space) 0;
+}
+
+.notice--success { border-color: var(--accent); }
+.notice--error { border-color: var(--danger); }
+
+/* Fortschrittsbalken */
+progress {
+  width: 220px;
+  max-width: 100%;
+  accent-color: var(--accent);
+}
+
+/* Fake-App-Bereich: Rahmen um die Übungsseite innerhalb einer Challenge */
+.fake-app {
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: var(--space) 0;
+}
+
+.fake-app h2 { color: #1a1a1a; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .card, .btn { transition: border-color .2s, transform .2s, box-shadow .2s, filter .2s; }
+}
+
+/* Kurze Animation, wenn eine Flag korrekt war */
+@keyframes pop-in {
+  0%   { opacity: 0; transform: scale(.9) translateY(6px); }
+  60%  { opacity: 1; transform: scale(1.03) translateY(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.notice--success:not([hidden]) {
+  animation: pop-in .35s ease-out;
+}
+
+@keyframes flash-success {
+  0%   { box-shadow: 0 0 0 0 rgba(57, 255, 136, .6); }
+  100% { box-shadow: 0 0 0 10px rgba(57, 255, 136, 0); }
+}
+
+.input--correct {
+  border-color: var(--accent);
+  animation: flash-success .5s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notice--success:not([hidden]),
+  .input--correct {
+    animation: none;
+  }
+}

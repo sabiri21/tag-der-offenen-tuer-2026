@@ -1,0 +1,13 @@
+.fake-app h2 { color: #1a1a1a; }
+
+.fake-app p { color: #1a1a1a; }
+
+/* Das Element existiert ganz normal im HTML, ist aber unsichtbar.
+   Über "Element untersuchen" (F12) findet man es trotzdem. */
+#versteckt {
+  display: none;
+}
+
+#flag-form {
+  margin-top: 1.5rem;
+}
